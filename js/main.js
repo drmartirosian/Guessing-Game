@@ -15,8 +15,20 @@ var prevGuesses = [];
 
 
 //-------------functions-------------------
+//message board
 functions getGuess() {
-    game.secret = Math.floor(Math.random()*(game.max - game.min +1)) + game.min;
+    let guess = NaN;
+    if (isNaN(guess) ||
+    guess < game.min ||
+    guess > game.max) {
+        guess = parseInt(prompt(`Enter a guess between ${game.min} and ${game.max}: `));
+    };
+    return guess;
+};
+
+//generator
+functions play() {
+    game.secretNum = Math.floor(Math.random()*(game.max - game.min +1)) + game.min;
     let guess = NaN;
     while(guess !== game.secretNum) {
         guess = getGuess();
@@ -26,9 +38,6 @@ functions getGuess() {
     }
 };
 
-functions play() {
-
-};
 
 functions render(guess) {
 
